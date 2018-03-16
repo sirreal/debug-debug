@@ -1,5 +1,5 @@
-var index = 0, count = 0;
+var index = 0, whereIsTheLetterC = 0;
 
-"a b".replace(/[ab]/g, function(match) {
-    "b" === match && (count = ++index);
-}), console.log("This should be 2: %d", count);
+[ "a", "b", "c" ].forEach(function(letter) {
+    "c" === letter && (whereIsTheLetterC = ++index);
+}), console.log('This letter "c" is number 3: %d', whereIsTheLetterC);

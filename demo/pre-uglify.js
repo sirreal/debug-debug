@@ -1,11 +1,11 @@
-/** @format */
-
 var index = 0;
-var count = 0;
-'a b'.replace( /[ab]/g, function( match ) {
+var whereIsTheLetterC = 0;
+
+[ 'a', 'b', 'c' ].forEach( function( letter ) {
 	index++;
-	if ( 'b' === match ) {
-		count = index;
+	if ( 'c' === letter ) {
+		whereIsTheLetterC = index;
 	}
 } );
-console.log( 'This should be 2: %d', count );
+
+console.log( 'This letter "c" is number 3: %d', whereIsTheLetterC );
