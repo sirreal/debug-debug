@@ -4,7 +4,7 @@
   "private": true,
   "main": "index.js",
   "dependencies": {
-    "uglify-js": "^3.3.15"
+    "uglify-es": "^3.3.9"
   },
   "browser": "index.js",
   "engines": {
@@ -12,6 +12,6 @@
     "npm": "5.6.0"
   },
   "scripts": {
-    "start": "uglifyjs --compress --output demo/post-uglify.js demo/pre-uglify.js"
+    "start": "uglifyjs --beautify --compress --output demo/post-uglify.js demo/pre-uglify.js"
   }
 }
