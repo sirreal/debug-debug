@@ -1,2 +1,2 @@
-const debug = require('./build/browser.js')('test');
+const debug = require('debug')('test');
 debug('This should say "Hello World!": %s', '"Hello World!"');
