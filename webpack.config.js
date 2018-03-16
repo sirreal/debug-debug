@@ -29,8 +29,9 @@ const webpackConfig = {
 	plugins: [
 		new UglifyJsPlugin( {
 			uglifyOptions: {
-				// Set `compress: false` and the bug disappears
-				compress: true,
+				compress: {
+					conditionals: true,
+				},
 			},
 		} ),
 	],
