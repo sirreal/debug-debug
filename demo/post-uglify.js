@@ -1,12 +1,5 @@
-function log() {
-    var args = Array.prototype.slice.call(arguments);
-    (function(args) {
-        args[0] = "%a %b " + args[0];
-        var index = 0, countPercents = 0;
-        args[0].replace(/%[a-zA-z]/g, function(match) {
-            "__DOESNOTMATCH__" !== match && "%b" === match && (countPercents = ++index);
-        }), args.splice(args.length, 0, countPercents);
-    }).call(null, args), Function.prototype.apply.call(console.log, console, args);
-}
+var index = 0, count = 0;
 
-log("This should be 2: %d");
+"a b".replace(/[ab]/g, function(match) {
+    "b" === match && (count = ++index);
+}), console.log("This should be 2: %d", count);
