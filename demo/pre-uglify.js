@@ -3,31 +3,23 @@
 function log() {
 	var args = Array.prototype.slice.call( arguments );
 
-	function formatArgs( args ) {
-		args[ 0 ] = '%c %c' + args[ 0 ] + '%c ';
+	function countPercentSigns( args ) {
+		args[ 0 ] = '%a %b ' + args[ 0 ];
 
-		var c = 'color: #f00';
-		args.splice( 1, 0, c, 'color: inherit' );
-
-		// the final "%c" is somewhat tricky, because there could be other
-		// arguments passed either before or after the %c, so we need to
-		// figure out the correct index to insert the CSS into
 		var index = 0;
-		var lastC = 0;
-		args[ 0 ].replace( /%[a-zA-Z%]/g, function( match ) {
-			if ( '%%' === match ) return;
+		var countPercents = 0;
+		args[ 0 ].replace( /%[a-zA-z]/g, function( match ) {
+			if ( '__DOESNOTMATCH__' === match ) return;
 			index++;
-			if ( '%c' === match ) {
-				// we only are interested in the *last* %c
-				// (the user may have provided their own)
-				lastC = index;
+			if ( '%b' === match ) {
+				countPercents = index;
 			}
 		} );
 
-		args.splice( lastC, 0, c );
+		args.splice( args.length, 0, countPercents );
 	}
-	formatArgs.call( null, args );
+	countPercentSigns.call( null, args );
 	Function.prototype.apply.call( console.log, console, args );
 }
 
-log( 'This should say "Hello World!": %s', 'Hello World!' );
+log( 'This should be 2: %d' );
